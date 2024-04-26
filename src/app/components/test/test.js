@@ -1,13 +1,15 @@
 'use client';
 
-import React, {useState, useEffect} from "react";
+import React from "react";
+import {useState, useEffect} from "react";
 import axios from "../../axios";
 
 var token = '266d5f2aa28fd8477115cc6ceecab371bee02aea34de8eacc055428ed6bc9a29bfcb1364585872e75581cb5b0abcf0c3caa1cbad7b1d47adfd03736ad3d2b2e62c89755c1795c646ea4ff263e015357b2ce4fef1481ec79b8ce1980716b249a79a0f3e7ef5b55daf15eddf4b475218795c4e634cc95854e1d120ea1841028457';
 
 const Page = () => {
+
 const [error, setError] = useState(null);
-const [journals, setJournals] = useState(0);
+const [journals, setJournals] = useState([]);
 
 useEffect(() => {
     axios
@@ -16,8 +18,8 @@ useEffect(() => {
                 'Authorization' : 'Bearer ' + token
               }                
         })
-        .then(({data}) => setJournals = (data.data))
-        .catch(error => setError = (error))
+        .then(({data}) => setJournals(data.data))
+        .catch(error => setError(error))
 }, []);
 
 if (error) {

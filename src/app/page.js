@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Users from "./components/users/users";
-import Page from "./components/test/test";
+import Images from "./components/test/test";
 
 
 
@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <Page>{}</Page>
+        <Images></Images>
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

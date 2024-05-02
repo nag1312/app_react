@@ -3,9 +3,10 @@ import Image from 'next/image'
 import React from "react";
 import {useState, useEffect} from "react";
 import axios from "../../axios";
+import nextConfig from '../../../../next.config.mjs';
 
 var token = '266d5f2aa28fd8477115cc6ceecab371bee02aea34de8eacc055428ed6bc9a29bfcb1364585872e75581cb5b0abcf0c3caa1cbad7b1d47adfd03736ad3d2b2e62c89755c1795c646ea4ff263e015357b2ce4fef1481ec79b8ce1980716b249a79a0f3e7ef5b55daf15eddf4b475218795c4e634cc95854e1d120ea1841028457';
-/*
+
 const Page = () => {
 
 const [error, setError] = useState(null);
@@ -33,7 +34,8 @@ return (
         </ul>
     </div>
 );
-};*/
+};
+
 const Images = () => {
 
     const [error, setError] = useState(null);
@@ -57,25 +59,16 @@ const Images = () => {
     return (
         <div className='Image'>
             {Images.map(({id, attributes }) =>
-        <div>
-           <p>{id}</p>
-           <div>
+        <div >
            {attributes.Image.data && attributes.Image.data.length > 0 &&
-            <p>{attributes.Image.data[0].attributes.url}
-            <Image key={id} src={attributes.Image.data[0].attributes.url}
+            <Image key={id} loader={() => `http://localhost:1337${attributes.Image.data[0].attributes.url}?w=${300}`} src={attributes.Image.data[0].attributes.url}
             width = {attributes.Image.data[0].attributes.width}
             height = {attributes.Image.data[0].attributes.height}
             alt = {attributes.Image.data[0].attributes.alternativeText}>
-
             </Image>
-            </p>
 }
-            
-            </div>
-
-  
         </div>)
-        }
+            }
         </div>
     )
 }
